@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block link %}
+    <div class="btn-group my-2 mx-2">
+        <button class="btn btn-outline-success dropdown-toggle px-5" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" style="font-size: 40px">
+            Категории
+        </button>
+        <ul class="dropdown-menu px-5 bg-dark">
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Костюмы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Толстовки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;>Брюки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Куртки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;"> Жилетки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Футболки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Обувь</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Кепки и Шапки</a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-group my-2 mx-2">
+        <button class="btn btn-outline-success dropdown-toggle px-5" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" style="font-size: 40px">
+            Информация
+        </button>
+        <ul class="dropdown-menu px-5 bg-dark">
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">О нас</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Общая информация</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Техническая поддержка</a>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="title_head text-center pt-5 pb-5">
+        <h1 class="head-our-works" style="font-size: 80px">Темы</h1>
+        <h2>╰────────╮• ✻ •╭────────╯</h2>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        {#        {% for product in products %}#}
+        {#            {% include "partial/photo_view_partial.html" %}#}
+        {#        {% empty %}#}
+        {#            <h2>Нет картинок</h2>#}
+        {#        {% endfor %}#}
+    </div>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}

@@ -12,10 +12,8 @@ class AdidasListView(ListView):
     template_name = "products/index.html"
     context_object_name = "products"
     paginate_by = 12
-    ordering = ("-created_at",)
+    # ordering = ("-created_at",)
 
     def get_queryset(self):
         products = super().get_queryset()
-        if self.request.user.is_authenticated:
-            products = products.filter(author=self.request.user)
         return products
