@@ -1,65 +1,195 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block link %}
-    <div class="btn-group my-2 mx-2">
-        <button class="btn btn-outline-success dropdown-toggle px-5" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false" style="font-size: 40px">
-            Категории
-        </button>
-        <ul class="dropdown-menu px-5 bg-dark">
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Костюмы</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Толстовки</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;>Брюки</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Куртки</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;"> Жилетки</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Футболки</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Обувь</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Кепки и Шапки</a>
-            </li>
-        </ul>
-    </div>
-    <div class="btn-group my-2 mx-2">
-        <button class="btn btn-outline-success dropdown-toggle px-5" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false" style="font-size: 40px">
-            Информация
-        </button>
-        <ul class="dropdown-menu px-5 bg-dark">
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">О нас</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Общая информация</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;">Техническая поддержка</a>
-            </li>
-        </ul>
-    </div>
+    {#    <div class="btn-group my-2 mx-2">#}
+    {#        <button class="btn btn-outline-success dropdown-toggle px-5" type="button" data-bs-toggle="dropdown"#}
+    {#                aria-expanded="false" style="font-size: 40px">#}
+    {#            Категории#}
+    {#        </button>#}
+    {#        <ul class="dropdown-menu px-5 bg-dark">#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Костюмы</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Толстовки</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#" style="text-align:center; color: whitesmoke; font-size: 35px;>Брюки</a>#}
+    {#            </li>#}
+    {#            <li class=" nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Куртки</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;"> Жилетки</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Футболки</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Обувь</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Кепки и Шапки</a>#}
+    {#            </li>#}
+    {#        </ul>#}
+    {#    </div>#}
+    {#    <div class="btn-group my-2 mx-2">#}
+    {#        <button class="btn btn-outline-success dropdown-toggle px-5" type="button" data-bs-toggle="dropdown"#}
+    {#                aria-expanded="false" style="font-size: 40px">#}
+    {#            Информация#}
+    {#        </button>#}
+    {#        <ul class="dropdown-menu px-5 bg-dark">#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">О нас</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Общая информация</a>#}
+    {#            </li>#}
+    {#            <li class="nav-item">#}
+    {#                <a class="nav-link text-decoration-underline" href="#"#}
+    {#                   style="text-align:center; color: whitesmoke; font-size: 35px;">Техническая поддержка</a>#}
+    {#            </li>#}
+    {#        </ul>#}
+    {#    </div>#}
 
 {% endblock %}
 
 {% block content %}
-    <div class="title_head text-center pt-5 pb-5">
-        <h1 class="head-our-works" style="font-size: 80px">Темы</h1>
-        <h2>╰────────╮• ✻ •╭────────╯</h2>
+    <div class="block_card_header pt-5" style="text-align: center;">
+        <h1 style="font-size: 70px; color: aliceblue">
+            Категории
+        </h1>
     </div>
-    <br>
-    <br>
+    <div class="container mt-5 mx-0 px-0">
+        <div class="row">
+
+            <div class="col-lg-4 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Костюмы</p>
+                    </div>
+                    <img src="{% static 'img/6669010010.jpg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Толстовки</p>
+                    </div>
+                    <img src="{% static 'img/tolstovka-adidas-sportswear-zne-chernyj-gt9780-01-laydown.jpg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Брюки</p>
+                    </div>
+                    <img src="{% static 'img/Майка_Adidas_Tiro_Sleeveless_Tee_O07677.jpg' %}"
+                         class="card-img-bottom rounded-0 " alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Куртки</p>
+                    </div>
+                    <img src="{% static 'img/100029003175b1.jpg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Жилетки</p>
+                    </div>
+                    <img src="{% static 'img/6637194700.jpg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Футболки</p>
+                    </div>
+                    <img src="{% static 'img/CW0709-1155x1155.jpg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-6 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Обувь</p>
+                    </div>
+                    <img src="{% static 'img/37902776635620.jpeg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-6 mb-5 px-3 mx-0">
+                <a href="#" class="costumes_card card border-dark text-center shadow-lg h-100"
+                   style="text-decoration: none">
+                    <div class="card-body">
+                        <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Кепки & Шапки</p>
+                    </div>
+                    <img src="{% static 'img/full_56-006-09(0).jpg' %}"
+                         class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-light w-50 btn-lg my-2">Перейти</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div style="border-bottom: 1px solid aliceblue">
+    </div>
+
     <div class="row">
         {#        {% for product in products %}#}
         {#            {% include "partial/photo_view_partial.html" %}#}
@@ -70,4 +200,5 @@
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
+
 {% endblock %}

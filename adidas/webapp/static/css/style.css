@@ -1,0 +1,22 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url('../img/1667259451_4-celes-club-p-kraft-bumaga-fon-vkontakte-4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.costumes_card {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью 50% */
+    border: none; /* Убираем границу, если она есть */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7); /* Добавляем тень */
+}
+
+.costumes_card img {
+    object-fit: cover; /* Установите object-fit на cover для изображений */
+    height: 100%; /* Установите высоту изображений на 100% контейнера */
+    width: 100%; /* Установите ширину изображений на 100% контейнера */
+}
