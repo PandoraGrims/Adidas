@@ -1,6 +1,6 @@
 body {
     font-family: 'Lato', sans-serif;
-    background-image: url('../img/1667259451_4-celes-club-p-kraft-bumaga-fon-vkontakte-4.jpg');
+    background-image: url('../img/tekstury-seryj-fon.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -19,4 +19,13 @@ body {
     object-fit: cover; /* Установите object-fit на cover для изображений */
     height: 100%; /* Установите высоту изображений на 100% контейнера */
     width: 100%; /* Установите ширину изображений на 100% контейнера */
+}
+
+.carousel-control-prev {
+    color: red; /* Замените 'red' на желаемый цвет */
+}
+
+/* Цвет для стрелочек вправо */
+.carousel-control-next {
+    color: green; /* Замените 'green' на желаемый цвет */
 }
