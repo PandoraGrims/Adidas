@@ -1,7 +1,8 @@
 from django.urls import path
 
 from webapp.views import AdidasListView, CostumesListView, ProductDetailView, CapsAndHastsListView, HoodiesListView, \
-    JacketsListView, ShoesListView, TShirtsListView, TrousersListView, VestsListView
+    JacketsListView, ShoesListView, TShirtsListView, TrousersListView, VestsListView, ProductCreateView
+from django.contrib.auth import views as auth_views
 
 app_name = "webapp"
 
@@ -16,5 +17,9 @@ urlpatterns = [
     path('trousers/', TrousersListView.as_view(), name="trousers_list"),
     path('vests/', VestsListView.as_view(), name="vests_list"),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail_view'),
+    path('add_product/', ProductCreateView.as_view(), name='add_product'),
+
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 ]
