@@ -4,13 +4,15 @@ from django import forms
 
 
 class MyUserCreationForm(UserCreationForm):
-
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ['password1',
+        fields = ['first_name',
+                  'last_name',
+                  'phone',
+                  'email',
+                  'password1',
                   'password2',
-                  'first_name',
-                  'last_name'
+
                   ]
 
 

@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse, reverse_lazy
@@ -11,6 +11,10 @@ from webapp.forms import ProductForm, ProductImageForm
 from webapp.models import Product, Category, ProductImage
 
 from django.contrib.auth import authenticate, login
+
+
+def is_superuser(user):
+    return user.is_superuser
 
 
 class AdidasListView(ListView):
@@ -115,7 +119,7 @@ class VestsListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = "products/product_detail_view.html"
+    template_name = "crud/product_detail.html"
     context_object_name = 'product'
 
     def get_context_data(self, **kwargs):
@@ -137,72 +141,31 @@ class ProductDetailView(DetailView):
         return context
 
 
-@method_decorator(login_required, name='dispatch')
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
-    template_name = 'product_form.html'
+    template_name = 'crud/product_create.html'
     success_url = reverse_lazy('webapp:index')
 
     def form_valid(self, form):
-        # Создание продукта
         product = form.save()
-
-        # Обработка изображений
         images = self.request.FILES.getlist('images')
         for image in images:
             ProductImage.objects.create(product=product, image=image)
-
+        sizes = self.request.POST.getlist('sizes')
+        product.sizes.set(sizes)
         return redirect('webapp:index')
 
 
-# @method_decorator(login_required, name='dispatch')
-# class ProductCreateView(CreateView):
-#     model = Product
-#     form_class = ProductForm
-#     template_name = 'product_form.html'
-#     success_url = reverse_lazy('webapp:index')
-#
-#     def form_valid(self, form):
-#         # Создание продукта
-#         product = form.save()
-#
-#         # Обработка изображений
-#         new_images = self.request.FILES.getlist('image')  # Обращение к полю формы, не new_images
-#         for image in new_images:
-#             ProductImage.objects.create(product=product, image=image)
-#
-#         return redirect('webapp:index')
-
-# for image in self.request.FILES.getlist('images'):
-#     ProductImage.objects.create(product=product, image=image)
-# return super().form_valid(form)
-
-# class ProductCreateView(CreateView):
-#     model = Product
-#     template_name = 'your_template.html'
-#     form_class = ProductForm
-#
-#     def form_valid(self, form):
-#         # Сохранение товара
-#         product = form.save()
-#
-#         # Обработка загрузки новых изображений
-#         new_images = self.request.FILES.getlist('new_images')
-#         for image in new_images:
-#             ProductImage.objects.create(product=product, image=image)
-#
-#         return redirect('your_redirect_url')
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'crud/product_update.html'
+    success_url = reverse_lazy('webapp:index')
 
 
-# def create_product_image(request):
-#     if request.method == 'POST':
-#         form = ProductImageForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('product_list')  # Замените 'product_list' на URL вашего списка товаров
-#     else:
-#         form = ProductImageForm()
-#     return render(request, 'create_product_image.html', {'form': form})
-
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'crud/product_delete.html'
+    success_url = reverse_lazy('webapp:index')
 

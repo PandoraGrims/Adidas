@@ -13,16 +13,11 @@
 
 {% block content %}
     <div class="profile-header">
-        <img class="profile-avatar img-fluid" src="{{ user_obj.avatar.url }}" alt="User Avatar">
         <div class="profile-username">{{ user_obj.username }}</div>
-        <div class="profile-bio">{{ user_obj.description }}</div>
-        {% for album in user_obj.albums.all %}
-            <div class="col-md-12 mb-4 text-center" style="font-size: 32px">
-                <a href="{% url "webapp:album_view" album.pk %}">
-                    Смотреть альбом <span class="alb-title" style="color: darkorange">{{ album.title }}</span>
-                </a>
-            </div>
-        {% endfor %}
+        <div class="profile-bio">{{ user_obj.first_name }}</div>
+        <div class="profile-bio">{{ user_obj.last_name }}</div>
+        <div class="profile-bio">{{ user_obj.phone }}</div>
+        <div class="profile-bio">{{ user_obj.email }}</div>
     </div>
     <div class="profile-posts mt-5">
         <div class="row">

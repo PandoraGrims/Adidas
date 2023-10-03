@@ -14,7 +14,8 @@
                             <div class="carousel-inner">
                                 {% for image in product.images.all %}
                                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                        <img src="{{ image.image.url }}" class="d-block w-100" style="border: 13px solid black; height: 800px"
+                                        <img src="{{ image.image.url }}" class="d-block w-100"
+                                             style="border: 13px solid black; height: 800px"
                                              alt="Костюмы-Картинка">
                                     </div>
                                 {% endfor %}
@@ -38,6 +39,12 @@
                                 {{ product.description }}
                             </p>
                         </div>
+                        <a href="{% url "webapp:update_product" product.pk %}">
+                            <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Изменить</button>
+                        </a>
+                        <a href="{% url "webapp:delete_product" product.pk %}">
+                            <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Удалить</button>
+                        </a>
                     </div>
                 </div>
             </div>

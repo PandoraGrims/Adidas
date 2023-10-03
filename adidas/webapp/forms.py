@@ -18,7 +18,10 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['name', 'code', 'price', 'description', 'category']
+        fields = ['name', 'code', 'price', 'description', 'category', 'sizes']
+        widgets = {
+            'sizes': forms.CheckboxSelectMultiple,
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

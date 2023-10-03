@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+status_choices = [(), ('blocked', 'Заблокировано')]
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=50, null=False, blank=False, verbose_name='Категория')
@@ -23,6 +25,18 @@ class ProductImage(models.Model):
         return f"Изображение для {self.product.name}"
 
 
+class Size(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Размер', unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "sizes"
+        verbose_name = "Размер"
+        verbose_name_plural = "Размеры"
+
+
 class Product(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, verbose_name='Название')
     code = models.CharField(max_length=100, null=False, blank=False, verbose_name="Артикул")
@@ -32,7 +46,7 @@ class Product(models.Model):
                                    default=None)
     category = models.ForeignKey('webapp.Category', related_name='products_category', on_delete=models.CASCADE,
                                  verbose_name='Категория', null=True, blank=True)
-
+    sizes = models.ManyToManyField(Size, related_name='products', verbose_name='Размеры', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
 
     def __str__(self):

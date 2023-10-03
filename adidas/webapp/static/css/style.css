@@ -8,6 +8,10 @@ body {
     padding: 0 0 0 0;
 }
 
+/*.header {*/
+/*    background-color: #000505;*/
+/*}*/
+
 .costumes_card {
     color: white;
     background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью 50% */
