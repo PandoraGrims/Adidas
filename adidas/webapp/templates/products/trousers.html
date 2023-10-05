@@ -13,5 +13,8 @@
 
     {% include "partial/partial_product_list.html" %}
 
+        {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 
 {% endblock %}

@@ -50,25 +50,6 @@
                             </a>
                         </div>
                         {% endif %}
-{#                        {% if request.user.is_authenticated %}#}
-{#                            <li class="nav-item nav-link">#}
-{#                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-{#                                   href="{% url "accounts:logout" %}">Выход</a>#}
-{#                            </li>#}
-{#                            <li class="nav-item nav-link text-decoration-underline">#}
-{#                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-{#                                   href="{% url "accounts:profile" request.user.pk %}">{{ request.user.username }}</a>#}
-{#                            </li>#}
-{#                        {% else %}#}
-{#                            <li class="nav-item nav-link text-decoration-underline">#}
-{#                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-{#                                   href="{% url "accounts:register" %}?next={{ request.path }}">Регистрация</a>#}
-{#                            </li>#}
-{#                            <li class="nav-item nav-link text-decoration-underline">#}
-{#                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-{#                                   href="{% url "accounts:login" %}?next={{ request.path }}">Вход</a>#}
-{#                            </li>#}
-{#                        {% endif %}#}
                     </ul>
                     <form class="d-flex">
                         {% if request.user.is_authenticated %}
@@ -95,37 +76,6 @@
             </div>
         </nav>
     </div>
-    {#    <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #000505">#}
-    {#        <div class="container text-right">#}
-    {#            <div class="collapse navbar-collapse text-right" id="navbarNav">#}
-    {#                <ul class="navbar-nav">#}
-    {#                    {% block link %}#}
-    {#                    {% endblock %}#}
-    {#                    {% if request.user.is_authenticated %}#}
-    {#                        <li class="nav-item nav-link">#}
-    {#                            <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-    {#                               href="{% url "accounts:logout" %}">Выход</a>#}
-    {#                        </li>#}
-    {#                        <li class="nav-item nav-link text-decoration-underline">#}
-    {#                            <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-    {#                               href="{% url "accounts:profile" request.user.pk %}">{{ request.user.username }}</a>#}
-    {#                        </li>#}
-    {#                    {% else %}#}
-    {#                        <li class="nav-item nav-link text-decoration-underline">#}
-    {#                            <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-    {#                               href="{% url "accounts:register" %}?next={{ request.path }}">Регистрация</a>#}
-    {#                        </li>#}
-    {#                        <li class="nav-item nav-link text-decoration-underline">#}
-    {#                            <a class="nav-link" style="color: whitesmoke; font-size: 35px;"#}
-    {#                               href="{% url "accounts:login" %}?next={{ request.path }}">Вход</a>#}
-    {#                        </li>#}
-    {#                    {% endif %}#}
-    {#                </ul>#}
-    {##}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </nav>#}
-
 </header>
 
 <div class="container_block_content container pt-3">

@@ -1,7 +1,7 @@
 from django import forms
 from multiupload.fields import MultiFileField
 
-from .models import Product, ProductImage, Category
+from .models import Product, ProductImage, Category, Size
 
 
 class SearchForm(forms.Form):
@@ -19,9 +19,11 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'code', 'price', 'description', 'category', 'sizes']
-        widgets = {
-            'sizes': forms.CheckboxSelectMultiple,
-        }
+        sizes = forms.ModelMultipleChoiceField(
+            queryset=Size.objects.all(),
+            widget=forms.CheckboxSelectMultiple,
+            required=False,
+        )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
