@@ -44,6 +44,7 @@ class Product(models.Model):
     image = models.ManyToManyField(ProductImage, related_name='products', verbose_name='Изображения', blank=True)
     description = models.TextField(max_length=2000, verbose_name="Описание", null=True, blank=True,
                                    default=None)
+    details = models.TextField(max_length=2000, verbose_name="Подробности", null=True, blank=True)
     category = models.ForeignKey('webapp.Category', related_name='products_category', on_delete=models.CASCADE,
                                  verbose_name='Категория', null=True, blank=True)
     sizes = models.ManyToManyField(Size, related_name='products', verbose_name='Размеры', blank=True)

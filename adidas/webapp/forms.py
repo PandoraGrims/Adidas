@@ -18,7 +18,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['name', 'code', 'price', 'description', 'category', 'sizes']
+        fields = ['name', 'code', 'price', 'description', 'details', 'category', 'sizes']
         sizes = forms.ModelMultipleChoiceField(
             queryset=Size.objects.all(),
             widget=forms.CheckboxSelectMultiple,

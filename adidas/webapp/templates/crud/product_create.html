@@ -11,56 +11,62 @@
 
         <div class="d-flex justify-content-center">
             <div class="costumes_card card border-dark text-center shadow-lg h-100"
-                 style="text-decoration: none">
+                 style="text-decoration: none; width: 600px">
                 <div class="card-body" style="font-size: 30px">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="name" style="font-size: 50px; font-weight: bold">Название:</label>
+                            <label for="name" style="font-size: 30px; font-weight: bold">Название:</label>
                             <input type="text" id="name" name="name"
-                                   style="width: 700px; height: 60px; font-size: 38px; border: 4px solid black; padding-left: 50px"
+                                   style="width: 500px; height: 50px; font-size: 25px"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="description" style="font-size: 50px; font-weight: bold">Описание:</label>
+                            <label for="description" style="font-size: 30px; font-weight: bold">Описание:</label>
                             <textarea id="description" name="description"
-                                      style="width: 700px; height: 500px; font-size: 28px; border: 4px solid black"
+                                      style="width: 500px; height: 300px; font-size: 24px"
+                                      rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" style="font-size: 30px; font-weight: bold">Подробности:</label>
+                            <textarea id="description" name="description"
+                                      style="width: 500px; height: 250px; font-size: 24px"
                                       rows="4"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="code"
-                                   style="font-size: 50px; font-weight: bold; text-align: left">Артикул: </label>
+                                   style="font-size: 30px; font-weight: bold; text-align: left">Артикул: </label>
                             <input type="text" id="code" name="code"
-                                   style="width: 735px; height: 60px; font-size: 38px; border: 4px solid black;"
+                                   style="width: 500px; height: 60px; font-size: 38px;"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="price" style="font-size: 50px; font-weight: bold">Цена: </label>
+                            <label for="price" style="font-size: 30px; font-weight: bold">Цена: </label>
                             <input type="number" id="price" name="price"
-                                   style="width: 820px; height: 60px; font-size: 38px; border: 4px solid black"
+                                   style="width: 500px; height: 60px; font-size: 38px;"
                                    required>
                         </div>
                         <div class="form-group">
                             <label for="{{ form.category.id_for_label }}"
-                                   style="font-size: 50px; font-weight: bold">Категория:</label>
+                                   style="font-size: 30px; font-weight: bold">Категория:</label>
                             <span style="height: 60px; font-size: 38px;">
                     {{ form.category }}
                 </span>
                         </div>
                         <div class="form-group">
-                            <label for="sizes" style="font-size: 50px; font-weight: bold">Размеры:</label>
-                            <span style="width: 400px; font-size: 28px;">
+                            <label for="sizes" style="font-size: 30px; font-weight: bold">Размеры:</label>
+                            <span style="width: 500px; font-size: 28px;">
                     {{ form.sizes }}
                 </span>
                         </div>
 
                         <div class="form-group">
 
-                            <label for="image" style="font-size: 50px; font-weight: bold">Картинка:</label>
+                            <label for="image" style="font-size: 30px; font-weight: bold">Картинка:</label>
                             <input type="file" id="images" name="images" accept="image/*" multiple required>
                         </div>
-                        <button type="submit" class="btn btn-danger btn-lg my-5"
-                                style="border: 4px solid black; color: black ;font-size: 40px; width: 400px; height: 80px">
+                        <button type="submit" class="btn btn-warning btn-lg my-5 pb-5"
+                                style="color: black ;font-size: 30px; width: 350px; height: 70px">
                             Добавить
                         </button>
                     </form>

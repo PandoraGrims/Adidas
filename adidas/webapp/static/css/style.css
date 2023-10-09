@@ -1,5 +1,11 @@
+@font-face {
+    font-family: 'AdidasFont'; /* Название шрифта, которое вы будете использовать */
+    src: url('../fonts/texgyreadventor-regular.otf') format('opentype'); /* Путь к шрифту */
+    /* Другие свойства, такие как font-weight и font-style, если необходимо */
+}
+
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'AdidasFont', sans-serif;
     background-image: url('../img/tekstury-seryj-fon.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -7,10 +13,6 @@ body {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
-
-/*.header {*/
-/*    background-color: #000505;*/
-/*}*/
 
 .costumes_card {
     color: white;
@@ -32,4 +34,19 @@ body {
 /* Цвет для стрелочек вправо */
 .carousel-control-next {
     color: green; /* Замените 'green' на желаемый цвет */
+}
+
+.card-with-dark-overlay {
+    position: relative;
+}
+
+.card-with-dark-overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Здесь можно настроить уровень затемнения */
+    z-index: 1;
 }
