@@ -1,0 +1,33 @@
+<li class="nav-item text-center me-2" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
+    <a class="nav-link" href="{% url "webapp:index" %}"
+       style="text-align:center; color: whitesmoke; font-size: 26px;">Главная</a>
+</li>
+<li class="nav-item dropdown text-center mx-2 d-flex align-center"
+    style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
+    <a class="nav-link active " style="font-size: 26px" href="{% url "webapp:category_list" %}" role="button">Категории</a>
+    <a class="nav-link bi-arrow-right-circle-fill active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+       style="font-size: 26px; display: flex; align-items: center;">
+    </a>
+    <ul class="dropdown-menu" style="margin-right: 2px; font-size: 22px">
+        <li><a class="dropdown-item" href="{% url "webapp:costumes_list" %}">Костюмы</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:hoodies_list" %}">Толстовки</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:trousers_list" %}">Брюки</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:jackets_list" %}">Куртки</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:vests_list" %}">Жилетки</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:t-shirts_list" %}">Футболки</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:shoes_list" %}">Обувь</a></li>
+        <li><a class="dropdown-item" href="{% url "webapp:caps_and_hats_list" %}">Кепки & Шапки</a></li>
+    </ul>
+</li>
+<li class="nav-item text-center mx-2" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
+    <a class="nav-link" href="{% url "webapp:shipping_payment" %}"
+       style="text-align:center; color: whitesmoke; font-size: 26px;">Доставка и оплата</a>
+</li>
+<li class="nav-item text-center mx-2" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
+    <a class="nav-link" href="{% url "webapp:exchange_return" %}"
+       style="text-align:center; color: whitesmoke; font-size: 26px;">Обмен и возврат</a>
+</li>
+<li class="nav-item text-center mx-2" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
+    <a class="nav-link" href="{% url "webapp:about_us" %}"
+       style="text-align:center; color: whitesmoke; font-size: 26px;">О нас</a>
+</li>

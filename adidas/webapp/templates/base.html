@@ -15,10 +15,9 @@
 <body>
 <header style="background-color: #000505">
 
-    <div class="header_text_logo text-center py-3" style="background-color: #000505">
+    <div class="header_text_logo text-center pb-3" style="background-color: #000505">
         <a class="navbar-brand " style="font-size: 92px; font-weight: bolder; color: aliceblue;"
-           href="{% url "webapp:index" %}">Adidas
-            <span style="font-size: 92px; color: aliceblue;">Пан Спортсмен</span>
+           href="{% url "webapp:index" %}">Пан-Спортсмен
         </a>
     </div>
 
@@ -43,31 +42,34 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {% if request.user.is_superuser %}
-                        <div class="panel_admin text-end">
-                            <a href="{% url 'webapp:add_product' %}">
-                                <button type="button" class="btn btn-warning" style="font-size: 30px">Добавить продукт
-                                </button>
-                            </a>
-                        </div>
+                            <div class="panel_admin text-end">
+                                <a href="{% url 'webapp:add_product' %}">
+                                    <button type="button" class="btn btn-warning" style="font-size: 30px">Добавить
+                                        продукт
+                                    </button>
+                                </a>
+                            </div>
                         {% endif %}
+                        {% block link %}
+                        {% endblock %}
                     </ul>
                     <form class="d-flex">
                         {% if request.user.is_authenticated %}
                             <li class="nav-item nav-link">
-                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"
+                                <a class="nav-link" style="color: whitesmoke; font-size: 28px;"
                                    href="{% url "accounts:logout" %}">Выход</a>
                             </li>
                             <li class="nav-item nav-link text-decoration-underline">
-                                <a class="nav-link ps-4" style="color: whitesmoke; font-size: 35px;"
+                                <a class="nav-link ps-4" style="color: whitesmoke; font-size: 28px;"
                                    href="{% url "accounts:profile" request.user.pk %}">{{ request.user.username }}</a>
                             </li>
                         {% else %}
                             <li class="nav-item nav-link text-decoration-underline">
-                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"
+                                <a class="nav-link" style="color: whitesmoke; font-size: 28px;"
                                    href="{% url "accounts:register" %}?next={{ request.path }}">Регистрация</a>
                             </li>
                             <li class="nav-item nav-link text-decoration-underline">
-                                <a class="nav-link" style="color: whitesmoke; font-size: 35px;"
+                                <a class="nav-link ps-4" style="color: whitesmoke; font-size: 28px;"
                                    href="{% url "accounts:login" %}?next={{ request.path }}">Вход</a>
                             </li>
                         {% endif %}
@@ -78,7 +80,7 @@
     </div>
 </header>
 
-<div class="container_block_content container pt-3">
+<div class="container_block_content p-0 m-0">
     {% block content %}
     {% endblock %}
 </div>

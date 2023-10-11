@@ -50,3 +50,90 @@ body {
     background: rgba(0, 0, 0, 0.5); /* Здесь можно настроить уровень затемнения */
     z-index: 1;
 }
+
+
+/* Стили для пагинации */
+.pagination {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 10px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #212529;
+    border: 2px solid #212529;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #212529;
+    color: #fff;
+}
+
+/* Стили для активной страницы */
+.pagination .active a {
+    background-color: #212529;
+    color: #fff;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    margin: 0 10px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: transparent;
+}
+
+.carousel-indicators .active {
+    background-color: white;
+
+    width: 12px;
+    height: 12px;
+
+}
+
+.bi-arrow-left-circle-fill {
+
+    color: white;
+    font-size: 45px;
+
+}
+
+.bi-arrow-right-circle-fill {
+    color: white;
+    font-size: 45px;
+}
+
+.carousel-caption {
+    padding-top: 100px;
+    /*padding-bottom: 200px;*/
+}
+
+.carousel-text {
+    font-size: 54px;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+.carousel-text-p {
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+}
+
+.btn-carousel {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+}

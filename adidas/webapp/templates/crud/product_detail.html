@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block link %}
+    {% include "partial/link_header_partial.html" %}
+{% endblock %}
 {% block content %}
-    <div class="container mt-5 mx-0 px-0">
-        <div class="row justify-content-center">
+    <div class="mt-5 mx-0 px-0">
+        <div class="row d-flex justify-content-center align-center">
             <div class="col-lg-7 mb-5 px-3 mx-0">
-                <div class="costumes_card card border-dark text-center shadow-lg h-100 "
-                     style="text-decoration: none">
-                    <h3 class="card-header card-title py-4 m-0 bg-dark" style="font-weight: bold; ">{{ product.name }}</h3>
+                <div class="costumes_card card border-dark text-center shadow-lg"
+                     style="text-decoration: none;">
+                    <h3 class="card-header card-title py-4 m-0 bg-dark"
+                        style="font-weight: bold; ">{{ product.name }}</h3>
                     <div class="card-body">
                         <div id="carouselExampleIndicators-{{ product.pk }}" class="carousel carousel-dark slide">
                             <div class="carousel-inner">
                                 {% for image in product.images.all %}
                                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                        <img src="{{ image.image.url }}" class="d-block w-100 rounded"
+                                        <img src="{{ image.image.url }}" class="d-block w-100 h-100 rounded"
                                              style="height: 650px; background-color: rgba(0, 0, 0, 0.5)"
                                              alt="Костюмы-Картинка">
                                     </div>
@@ -56,12 +59,14 @@
                         </div>
                         {% if request.user.is_superuser %}
                             <div class="shadow-lg rounded bg-dark py-3 px-4 my-3">
-                            <a href="{% url "webapp:update_product" product.pk %}">
-                                <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Изменить</button>
-                            </a>
-                            <a href="{% url "webapp:delete_product" product.pk %}">
-                                <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Удалить</button>
-                            </a>
+                                <a href="{% url "webapp:update_product" product.pk %}">
+                                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Изменить
+                                    </button>
+                                </a>
+                                <a href="{% url "webapp:delete_product" product.pk %}">
+                                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Удалить
+                                    </button>
+                                </a>
                             </div>
                         {% endif %}
                     </div>

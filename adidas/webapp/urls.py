@@ -2,7 +2,7 @@ from django.urls import path
 
 from webapp.views import AdidasListView, CostumesListView, ProductDetailView, CapsAndHastsListView, HoodiesListView, \
     JacketsListView, ShoesListView, TShirtsListView, TrousersListView, VestsListView, ProductCreateView, \
-    ProductUpdateView, ProductDeleteView
+    ProductUpdateView, ProductDeleteView, ShippingPaymentView, ExchangeReturnView, AboutUsView, CategoryListView
 from django.contrib.auth import views as auth_views
 
 app_name = "webapp"
@@ -18,6 +18,11 @@ urlpatterns = [
     path('trousers/', TrousersListView.as_view(), name="trousers_list"),
     path('vests/', VestsListView.as_view(), name="vests_list"),
 
+    path('shipping_payment/', ShippingPaymentView.as_view(), name="shipping_payment"),
+    path('exchange_return/', ExchangeReturnView.as_view(), name="exchange_return"),
+    path('about_us/', AboutUsView.as_view(), name="about_us"),
+    path('category_list/', CategoryListView.as_view(), name="category_list"),
+
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail_view'),
     path('add_product/', ProductCreateView.as_view(), name='add_product'),
     path('update_product/<int:pk>/', ProductUpdateView.as_view(), name='update_product'),
@@ -27,3 +32,4 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 ]
+

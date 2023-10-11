@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.http import request, HttpResponse
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from webapp.forms import ProductForm, ProductImageForm
 from webapp.models import Product, Category, ProductImage
@@ -21,7 +21,7 @@ class AdidasListView(ListView):
     model = Product
     template_name = "index.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
     ordering = ("-created_at",)
 
     def get_queryset(self):
@@ -33,7 +33,7 @@ class CostumesListView(ListView):
     model = Product
     template_name = "products/costumes.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Costumes/Костюмы')
@@ -44,7 +44,7 @@ class CapsAndHastsListView(ListView):
     model = Product
     template_name = "products/caps_and_hats.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Caps&Hats/Кепки&Шапки')
@@ -55,7 +55,7 @@ class HoodiesListView(ListView):
     model = Product
     template_name = "products/hoodies.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Hoodies/Толстовки')
@@ -66,7 +66,7 @@ class JacketsListView(ListView):
     model = Product
     template_name = "products/jackets.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Jackets/Куртки')
@@ -77,7 +77,7 @@ class ShoesListView(ListView):
     model = Product
     template_name = "products/shoes.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Shoes/Обувь')
@@ -88,7 +88,7 @@ class TShirtsListView(ListView):
     model = Product
     template_name = "products/t-shirts.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='T-shirts/Футболки')
@@ -99,7 +99,7 @@ class TrousersListView(ListView):
     model = Product
     template_name = "products/trousers.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Trousers/Брюки')
@@ -110,7 +110,7 @@ class VestsListView(ListView):
     model = Product
     template_name = "products/vests.html"
     context_object_name = "products"
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Vests/Жилетки')
@@ -169,3 +169,18 @@ class ProductDeleteView(DeleteView):
     template_name = 'crud/product_delete.html'
     success_url = reverse_lazy('webapp:index')
 
+
+class ShippingPaymentView(TemplateView):
+    template_name = "shipping_payment.html"
+
+
+class ExchangeReturnView(TemplateView):
+    template_name = "exchange_return.html"
+
+
+class AboutUsView(TemplateView):
+    template_name = "about_us.html"
+
+
+class CategoryListView(TemplateView):
+    template_name = "category_list.html"

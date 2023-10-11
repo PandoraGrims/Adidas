@@ -1,0 +1,126 @@
+{% load static %}
+<div class="block_card_header pt-5 d-flex justify-content-center align-items-center" style="text-align: center;">
+    <h1 style="font-size: 70px; color: #212529; font-weight: bold; border-bottom: 3px solid black; padding: 4px; max-width: 500px">
+        Категории
+    </h1>
+</div>
+<div class="container pt-4">
+    <div class="row">
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:costumes_list" %}"
+               class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Костюмы</p>
+                </div>
+                <img src="{% static 'img/6669010010.jpg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:hoodies_list" %}" class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Толстовки</p>
+                </div>
+                <img src="{% static 'img/tolstovka-adidas-sportswear-zne-chernyj-gt9780-01-laydown.jpg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:trousers_list" %}"
+               class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Брюки</p>
+                </div>
+                <img src="{% static 'img/Майка_Adidas_Tiro_Sleeveless_Tee_O07677.jpg' %}"
+                     class="card-img-bottom rounded-0 " alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:jackets_list" %}" class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Куртки</p>
+                </div>
+                <img src="{% static 'img/100029003175b1.jpg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:vests_list" %}" class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Жилетки</p>
+                </div>
+                <img src="{% static 'img/6637194700.jpg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:t-shirts_list" %}"
+               class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Футболки</p>
+                </div>
+                <img src="{% static 'img/CW0709-1155x1155.jpg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:shoes_list" %}" class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Обувь</p>
+                </div>
+                <img src="{% static 'img/37902776635620.jpeg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 mb-5 px-3 mx-0">
+            <a href="{% url "webapp:caps_and_hats_list" %}"
+               class="costumes_card card border-dark text-center shadow-lg h-100"
+               style="text-decoration: none">
+                <div class="card-body">
+                    <p style="border-bottom: 1px solid whitesmoke; font-size: 32px">Кепки & Шапки</p>
+                </div>
+                <img src="{% static 'img/full_56-006-09(0).jpg' %}"
+                     class="card-img-bottom rounded-0" alt="Костюмы-Картинка">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Перейти</button>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
