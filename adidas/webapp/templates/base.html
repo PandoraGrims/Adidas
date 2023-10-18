@@ -21,17 +21,17 @@
         </a>
     </div>
 
-    <div style="border-bottom: 18px solid aliceblue">
-    </div>
-    <div style="border-bottom: 20px solid #000505">
-    </div>
-    <div style="border-bottom: 18px solid aliceblue">
-    </div>
-    <div style="border-bottom: 20px solid #000505">
-    </div>
-    <div style="border-bottom: 18px solid aliceblue">
-    </div>
-    <div class="container py-2">
+{#    <div style="border-bottom: 18px solid aliceblue">#}
+{#    </div>#}
+{#    <div style="border-bottom: 20px solid #000505">#}
+{#    </div>#}
+{#    <div style="border-bottom: 18px solid aliceblue">#}
+{#    </div>#}
+{#    <div style="border-bottom: 20px solid #000505">#}
+{#    </div>#}
+{#    <div style="border-bottom: 18px solid aliceblue">#}
+{#    </div>#}
+    <div class="py-2 mx-5 px-3">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {% if request.user.is_superuser %}
-                            <div class="panel_admin text-end">
+                            <div class="panel_admin text-end pe-2">
                                 <a href="{% url 'webapp:add_product' %}">
                                     <button type="button" class="btn btn-warning" style="font-size: 30px">Добавить
                                         продукт
@@ -50,8 +50,10 @@
                                 </a>
                             </div>
                         {% endif %}
+
                         {% block link %}
                         {% endblock %}
+
                     </ul>
                     <form class="d-flex">
                         {% if request.user.is_authenticated %}
@@ -81,10 +83,15 @@
 </header>
 
 <div class="container_block_content p-0 m-0">
+
     {% block content %}
+
     {% endblock %}
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/backBtnskript.js' %}"></script>
+<script src="{% static 'js/searchScript.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>

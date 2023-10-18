@@ -1,4 +1,4 @@
-<div class="container">
+<div class=" mt-4">
     <ul class="pagination ">
         <!-- В начало -->
         <li style="font-size: 32px;">
@@ -6,29 +6,29 @@
         </li>
 
         <!-- Назад -->
-        {% if page_obj.has_previous %}
+        {% if page.has_previous %}
             <li style="font-size: 32px;">
-                <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page_obj.previous_page_number }}">Назад</a>
+                <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page.previous_page_number }}">Назад</a>
             </li>
         {% endif %}
 
         <!-- Плитки с номерами страниц -->
-        {% for page_number in page_obj.paginator.page_range %}
-            <li style="font-size: 32px;" class="{% if page_number == page_obj.number %}active{% endif %}">
-                <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page_number }}">{{ page_number }}</a>
+        {% for num in page.paginator.page_range %}
+            <li style="font-size: 32px;" class="{% if num == page.number %}active{% endif %}">
+                <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ num }}">{{ num }}</a>
             </li>
         {% endfor %}
 
         <!-- Вперед -->
-        {% if page_obj.has_next %}
+        {% if page.has_next %}
             <li style="font-size: 32px;">
-                <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page_obj.next_page_number }}">Далее</a>
+                <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page.next_page_number }}">Далее</a>
             </li>
         {% endif %}
 
         <!-- В конец -->
         <li style="font-size: 32px;">
-            <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page_obj.paginator.num_pages }}">Конец</a>
+            <a style=" text-decoration: none" href="?{% if query %}{{ query }}&{% endif %}page={{ page.paginator.num_pages }}">Конец</a>
         </li>
     </ul>
 </div>

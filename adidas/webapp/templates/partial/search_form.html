@@ -1,8 +1,22 @@
-<form class="text-center" action="" method="GET">
-    <label for="{{ form.search.id_for_label }}">{{ form.search.label }}:</label>
-    {{ form.search }}
-    <input type="submit" value="Поиск">
-    {% for error in form.search.errors %}
-        <p class="form-error">{{ error }}</p>
-    {% endfor %}
-</form>
+{#<form class="search_form_block text-center" action="" method="GET">#}
+{#    <label for="{{ form.search.id_for_label }}">{{ form.search.label }}:</label>#}
+{#    {{ form.search }}#}
+{#    <input type="submit" value="Поиск" style="font-size: 22px">#}
+{#    {% for error in form.search.errors %}#}
+{#        <p class="form-error">{{ error }}</p>#}
+{#    {% endfor %}#}
+{#</form>#}
+
+<div class="search_container ">
+    <form class="search-form text-right" action="" method="GET">
+        <div class="form-group mb-0 pe-5">
+            <label for="{{ form.search.id_for_label }}" style="font-size: 24px;"></label>
+            {{ form.search }}
+            <input type="submit" value="Поиск" style="font-size: 24px;">
+        </div>
+        {% for error in form.search.errors %}
+            <p class="form-error">{{ error }}</p>
+        {% endfor %}
+
+    </form>
+</div>

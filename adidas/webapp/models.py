@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.conf import settings
 
 status_choices = [(), ('blocked', 'Заблокировано')]
 
@@ -70,3 +72,21 @@ class ProductCategory(models.Model):
 
     def __str__(self):
         return "{} | {}".format(self.product, self.category)
+
+
+class Purchase(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Покупатель")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Товар")
+    size = models.ForeignKey(Size, on_delete=models.CASCADE, verbose_name="Размер")
+    phone_number = models.CharField(max_length=200, verbose_name="Номер телефона")
+    delivery_address = models.TextField(verbose_name="Адрес доставки")
+    payment_method = models.CharField(max_length=200, verbose_name="Способ оплаты")
+    is_paid = models.BooleanField(default=False, verbose_name="Оплачено")
+    is_delivered = models.BooleanField(default=False, verbose_name="Доставлено")
+
+    def __str__(self):
+        return f"Покупка #{self.id}"
+
+    class Meta:
+        verbose_name = "Покупка"
+        verbose_name_plural = "Покупки"

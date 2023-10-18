@@ -15,52 +15,52 @@
                 <div class="card-body" style="font-size: 30px">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="form-group">
+                        <div class="form-group py-3">
                             <label for="name" style="font-size: 30px; font-weight: bold">Название:</label>
                             <input type="text" id="name" name="name"
                                    style="width: 500px; height: 50px; font-size: 25px"
                                    required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group py-3">
                             <label for="description" style="font-size: 30px; font-weight: bold">Описание:</label>
                             <textarea id="description" name="description"
                                       style="width: 500px; height: 300px; font-size: 24px"
                                       rows="4"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="description" style="font-size: 30px; font-weight: bold">Подробности:</label>
-                            <textarea id="description" name="description"
+                        <div class="form-group py-3">
+                            <label for="details" style="font-size: 30px; font-weight: bold">Подробности:</label>
+                            <textarea id="details" name="details"
                                       style="width: 500px; height: 250px; font-size: 24px"
                                       rows="4"></textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group py-3">
                             <label for="code"
                                    style="font-size: 30px; font-weight: bold; text-align: left">Артикул: </label>
                             <input type="text" id="code" name="code"
                                    style="width: 500px; height: 60px; font-size: 38px;"
                                    required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group py-3">
                             <label for="price" style="font-size: 30px; font-weight: bold">Цена: </label>
                             <input type="number" id="price" name="price"
                                    style="width: 500px; height: 60px; font-size: 38px;"
                                    required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group py-3">
                             <label for="{{ form.category.id_for_label }}"
                                    style="font-size: 30px; font-weight: bold">Категория:</label>
                             <span style="height: 60px; font-size: 38px;">
                     {{ form.category }}
                 </span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group py-3">
                             <label for="sizes" style="font-size: 30px; font-weight: bold">Размеры:</label>
                             <span style="width: 500px; font-size: 28px;">
                     {{ form.sizes }}
                 </span>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group py-3">
 
                             <label for="image" style="font-size: 30px; font-weight: bold">Картинка:</label>
                             <input type="file" id="images" name="images" accept="image/*" multiple required>

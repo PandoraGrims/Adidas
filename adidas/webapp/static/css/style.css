@@ -137,3 +137,50 @@ body {
     font-weight: 700;
     color: white;
 }
+
+/*.gradient_price {*/
+/*    background: rgb(33, 37, 41);*/
+/*    background: linear-gradient(90deg, rgba(33, 37, 41, 1) 0%, rgba(187, 189, 190, 1) 50%, rgba(33, 37, 41, 1) 100%);*/
+/*}*/
+
+/* Стили для формы поиска */
+.search-form {
+    display: flex;
+    justify-content: end; /* Центрирование по горизонтали */
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #212529;
+    border-top: 2px solid #212529;
+    background: rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.search-form label {
+    font-size: 24px;
+    margin-right: 10px;
+    color: white;
+}
+
+.search-form input[type="text"] {
+    font-size: 22px;
+    border: 2px solid #212529;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 322px;
+}
+
+.search-form input[type="submit"] {
+    font-size: 22px;
+    background-color: #212529;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+/* Стили для сообщений об ошибках */
+.form-error {
+    color: red;
+    font-size: 18px;
+}

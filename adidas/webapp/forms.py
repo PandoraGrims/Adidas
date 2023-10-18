@@ -12,13 +12,14 @@ class ProductForm(forms.ModelForm):
     image = MultiFileField(
         min_num=1,
         max_num=10,
-        required=False  # Если вы хотите, чтобы поле было необязательным
+        required=False
     )
     category = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="Выберите категорию")
 
     class Meta:
         model = Product
         fields = ['name', 'code', 'price', 'description', 'details', 'category', 'sizes']
+
         sizes = forms.ModelMultipleChoiceField(
             queryset=Size.objects.all(),
             widget=forms.CheckboxSelectMultiple,
@@ -28,6 +29,8 @@ class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['image'].widget.attrs['multiple'] = True
+
+
 
 
 class ProductImageForm(forms.ModelForm):

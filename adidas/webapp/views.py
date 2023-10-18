@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
@@ -7,33 +9,57 @@ from django.http import request, HttpResponse
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
-from webapp.forms import ProductForm, ProductImageForm
+from webapp.forms import ProductForm, ProductImageForm, SearchForm
 from webapp.models import Product, Category, ProductImage
 
 from django.contrib.auth import authenticate, login
+
+
+class PaginatedListView(ListView):
+    items_per_page = 12  # Количество элементов на странице
+    page_url_param = 'page'  # Параметр в URL для страницы
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        page_number = self.request.GET.get(self.page_url_param)
+        paginator = Paginator(self.get_queryset(), self.items_per_page)
+        page = paginator.get_page(page_number)
+
+        context['page'] = page
+
+        return context
 
 
 def is_superuser(user):
     return user.is_superuser
 
 
-class AdidasListView(ListView):
+class AdidasListView(PaginatedListView):
     model = Product
     template_name = "index.html"
     context_object_name = "products"
-    paginate_by = 9
     ordering = ("-created_at",)
+    paginate_by = 12
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = SearchForm(self.request.GET)
+        return context
 
     def get_queryset(self):
-        products = super().get_queryset()
-        return products
+        queryset = super().get_queryset()
+        search_value = self.request.GET.get('search')
+        if search_value:
+            queryset = queryset.filter(Q(name__icontains=search_value) | Q(description__icontains=search_value))
+        return queryset
 
 
 class CostumesListView(ListView):
     model = Product
     template_name = "products/costumes.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Costumes/Костюмы')
@@ -44,7 +70,7 @@ class CapsAndHastsListView(ListView):
     model = Product
     template_name = "products/caps_and_hats.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Caps&Hats/Кепки&Шапки')
@@ -55,7 +81,7 @@ class HoodiesListView(ListView):
     model = Product
     template_name = "products/hoodies.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Hoodies/Толстовки')
@@ -66,7 +92,7 @@ class JacketsListView(ListView):
     model = Product
     template_name = "products/jackets.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Jackets/Куртки')
@@ -77,7 +103,7 @@ class ShoesListView(ListView):
     model = Product
     template_name = "products/shoes.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Shoes/Обувь')
@@ -88,7 +114,7 @@ class TShirtsListView(ListView):
     model = Product
     template_name = "products/t-shirts.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='T-shirts/Футболки')
@@ -99,7 +125,7 @@ class TrousersListView(ListView):
     model = Product
     template_name = "products/trousers.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Trousers/Брюки')
@@ -110,7 +136,7 @@ class VestsListView(ListView):
     model = Product
     template_name = "products/vests.html"
     context_object_name = "products"
-    paginate_by = 9
+    paginate_by = 12
 
     def get_queryset(self):
         category = get_object_or_404(Category, category_name='Vests/Жилетки')

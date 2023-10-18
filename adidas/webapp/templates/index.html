@@ -8,27 +8,17 @@
 {% block content %}
     {% include "partial/carusel_base_index.html" %}
 
-{#    <div class="logo_content_container container text-center">#}
-{#        <img src="{% static 'img/pngwing.com.png' %}"#}
-{#             class="index_logo_img w-50 p-o m-0" alt="adidas-logo">#}
-{#        <h3 style="font-size: 140px; font-weight: bold">adidas</h3>#}
-{#        <h3 style="font-size: 120px">"Пан-Спортсмен"</h3>#}
-{#        <div class="content_near_img p-0 m-0" style="font-size: 40px">#}
-{#            <p>Пан-Спортсмен - магазин одежды и обуви для спорта и отдыха от всем известой немецкой компании Adidas.</p>#}
-{#            <p>Крупнейший выбор фирменного товара.</p>#}
-{#        </div>#}
-{#    </div>#}
 
-    <div class="container">
+
+    <div class="container_partial_product_list">
         {% include "partial/partial_product_list.html" %}
     </div>>
 
-    <div class="container">
+
         <div class="line_bord mb-4" style="border-bottom: 2px solid aliceblue;">
         </div>
-    </div>
 
-            {% if is_paginated %}
-                {% include 'partial/pagination.html' %}
-            {% endif %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 {% endblock %}
