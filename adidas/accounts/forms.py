@@ -6,7 +6,8 @@ from django import forms
 class MyUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ['first_name',
+        fields = ['username',
+                  'first_name',
                   'last_name',
                   'phone',
                   'email',

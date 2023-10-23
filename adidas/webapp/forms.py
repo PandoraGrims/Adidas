@@ -1,7 +1,7 @@
 from django import forms
 from multiupload.fields import MultiFileField
 
-from .models import Product, ProductImage, Category, Size
+from .models import Product, ProductImage, Category, Size, Purchase
 
 
 class SearchForm(forms.Form):
@@ -31,9 +31,21 @@ class ProductForm(forms.ModelForm):
         self.fields['image'].widget.attrs['multiple'] = True
 
 
-
-
 class ProductImageForm(forms.ModelForm):
     class Meta:
         model = ProductImage
         fields = ['product', 'image']
+
+
+class PurchaseForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        product = kwargs.pop('product', None)
+
+        super(PurchaseForm, self).__init__(*args, **kwargs)
+
+        if product:
+            self.fields['size'].queryset = product.sizes.all()
+
+    class Meta:
+        model = Purchase
+        fields = ['size', 'phone_number', 'delivery_address']

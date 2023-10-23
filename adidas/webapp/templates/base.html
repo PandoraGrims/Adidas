@@ -13,24 +13,26 @@
     <title>{% block title %}Adidas PAN SPORTSMEN{% endblock %}</title>
 </head>
 <body>
-<header style="background-color: #000505">
+<header>
 
-    <div class="header_text_logo text-center pb-3" style="background-color: #000505">
-        <a class="navbar-brand " style="font-size: 92px; font-weight: bolder; color: aliceblue;"
-           href="{% url "webapp:index" %}">Пан-Спортсмен
+    <div class="header_text_logo text-center pt-3">
+        <a class="navbar-brand" href="{% url "webapp:index" %}">
+            <img src="{% static "img/3gir.png" %}" alt="Image 0" style="width: 170px; height: 150px;">
+            <img src="{% static "img/oie_dUbJgtgudxui.png" %}" alt="Image 1" style="width: 250px; height: 150px;">
+            <img src="{% static "img/oie_qCYr28VnFFy7.png" %}" alt="Image 2" style="width: 550px; height: 150px;">
         </a>
     </div>
 
-{#    <div style="border-bottom: 18px solid aliceblue">#}
-{#    </div>#}
-{#    <div style="border-bottom: 20px solid #000505">#}
-{#    </div>#}
-{#    <div style="border-bottom: 18px solid aliceblue">#}
-{#    </div>#}
-{#    <div style="border-bottom: 20px solid #000505">#}
-{#    </div>#}
-{#    <div style="border-bottom: 18px solid aliceblue">#}
-{#    </div>#}
+    {#    <div style="border-bottom: 18px solid aliceblue">#}
+    {#    </div>#}
+    {#    <div style="border-bottom: 20px solid #000505">#}
+    {#    </div>#}
+    {#    <div style="border-bottom: 18px solid aliceblue">#}
+    {#    </div>#}
+    {#    <div style="border-bottom: 20px solid #000505">#}
+    {#    </div>#}
+    {#    <div style="border-bottom: 18px solid aliceblue">#}
+    {#    </div>#}
     <div class="py-2 mx-5 px-3">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">

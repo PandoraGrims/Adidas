@@ -8,9 +8,9 @@ from django.utils.decorators import method_decorator
 from django.http import request, HttpResponse
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-
-from webapp.forms import ProductForm, ProductImageForm, SearchForm
-from webapp.models import Product, Category, ProductImage
+from django.http import HttpRequest
+from webapp.forms import ProductForm, ProductImageForm, SearchForm, PurchaseForm
+from webapp.models import Product, Category, ProductImage, Purchase, Size
 
 from django.contrib.auth import authenticate, login
 
@@ -210,3 +210,101 @@ class AboutUsView(TemplateView):
 
 class CategoryListView(TemplateView):
     template_name = "category_list.html"
+
+
+class PurchaseView(TemplateView):
+    template_name = 'purchase/purchase_options.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product_id = kwargs['product_id']
+        product = get_object_or_404(Product, pk=product_id)
+        context['product'] = product
+        return context
+
+
+# class ProductPurchaseView(CreateView):
+#     model = Purchase
+#     form_class = PurchaseForm
+#     template_name = 'purchase/purchase_form_one.html'
+#     success_url = reverse_lazy('webapp:purchase_success')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         product = get_object_or_404(Product, pk=self.kwargs['product_id'])
+#         context['product'] = product
+#         context['sizes'] = product.sizes.all()
+#         return context
+#
+#     def form_valid(self, form):
+#         product = get_object_or_404(Product, pk=self.kwargs['product_id'])
+#         form.instance.user = self.request.user
+#         form.instance.product = product
+#         return super().form_valid(form)
+
+class PurchaseSuccessView(TemplateView):
+    template_name = 'purchase/purchase_success.html'
+
+
+class PurchaseNoDeliveryView(View):
+    template_name = 'purchase/purchase_form_one.html'
+    success_url = reverse_lazy('webapp:purchase_success')
+
+    def get(self, request, product_id):
+        product = Product.objects.get(pk=product_id)
+        form = PurchaseForm(product=product)
+        return render(request, self.template_name, {'product': product, 'form': form})
+
+    def post(self, request, product_id):
+        product = Product.objects.get(pk=product_id)
+        phone = request.POST.get('phone_number')
+        delivery_address = request.POST.get('delivery_address')
+        size_id = request.POST.get('size')
+        size = get_object_or_404(Size, pk=size_id)
+
+        form = PurchaseForm(request.POST, product=product)
+
+        if form.is_valid():
+            purchase = form.save(commit=False)
+            purchase.user = request.user
+            purchase.product = product
+            purchase.size = size
+            purchase.phone_number = phone
+            purchase.delivery_address = delivery_address
+            purchase.save()
+            return redirect(self.success_url)
+        else:
+            print(form.errors)
+        return render(request, self.template_name, {'product': product, 'form': form})
+
+
+class PurchaseWithDeliveryView(View):
+    template_name = 'purchase/purchase_form_two.html'
+    success_url = reverse_lazy('webapp:purchase_success')
+
+    def get(self, request, product_id):
+        product = Product.objects.get(pk=product_id)
+        form = PurchaseForm(product=product)
+        return render(request, self.template_name, {'product': product, 'form': form})
+
+    def post(self, request, product_id):
+        product = Product.objects.get(pk=product_id)
+        phone = request.POST.get('phone_number')
+        address = request.POST.get('address')
+        size_id = request.POST.get('size')
+        size = get_object_or_404(Size, pk=size_id)
+
+        form = PurchaseForm(request.POST, product=product)
+
+        if form.is_valid():
+            purchase = form.save(commit=False)
+            purchase.user = request.user
+            purchase.product = product
+            purchase.size = size
+            purchase.phone_number = phone
+            purchase.address = address
+            purchase.save()
+            return redirect(self.success_url)
+        else:
+            print(form.errors)
+        return render(request, self.template_name, {'product': product, 'form': form})

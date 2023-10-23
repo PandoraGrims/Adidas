@@ -2,7 +2,8 @@ from django.urls import path
 
 from webapp.views import AdidasListView, CostumesListView, ProductDetailView, CapsAndHastsListView, HoodiesListView, \
     JacketsListView, ShoesListView, TShirtsListView, TrousersListView, VestsListView, ProductCreateView, \
-    ProductUpdateView, ProductDeleteView, ShippingPaymentView, ExchangeReturnView, AboutUsView, CategoryListView
+    ProductUpdateView, ProductDeleteView, ShippingPaymentView, ExchangeReturnView, AboutUsView, CategoryListView, \
+    PurchaseView, PurchaseNoDeliveryView, PurchaseWithDeliveryView, PurchaseSuccessView
 from django.contrib.auth import views as auth_views
 
 app_name = "webapp"
@@ -31,6 +32,10 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-
+    path('product/<int:product_id>/options/', PurchaseView.as_view(), name='product_purchase'),
+    path('product/<int:product_id>/purchase-no-delivery/', PurchaseNoDeliveryView.as_view(),
+         name='purchase_no_delivery'),
+    path('product/<int:product_id>/purchase-with-delivery/', PurchaseWithDeliveryView.as_view(),
+         name='purchase_with_delivery'),
+    path('purchase-success/', PurchaseSuccessView.as_view(), name='purchase_success'),
 ]
-

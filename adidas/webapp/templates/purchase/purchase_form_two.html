@@ -1,15 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block link %}
     {% include "partial/link_header_partial.html" %}
 {% endblock %}
-{% block content %}
 
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xxl-12 mt-5 mx-0">
+                <div class="costumes_card card border-dark text-center shadow-lg" style="text-decoration: none;">
+                    <h3 class="card-header card-title py-4 m-0 bg-dark" style="font-weight: bold;">Купить с
+                        доставки</h3>
+                    <div class="card-body">
+                        <form method="post" class="purchase-form">
+                            {% csrf_token %}
+                            <label for="size">Размер:</label>
+                            <select name="size" id="size">
+                                {% for size in product.sizes.all %}
+                                    <option value="{{ size.pk }}">{{ size }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="phone">Контактный номер:</label>
+                            <input type="text" name="phone_number" id="phone">
+                            <label for="address">Адрес доставки:</label>
+                            <input type="text" name="delivery_address" id="address">
+                            <button type="submit" class="btn btn-primary mt-3">Оформить заказ</button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container mt-5">
         <div class="row d-flex justify-content-center align-center">
-            <div class="col-lg-6 mb-5  mx-0">
+            <div class="col-lg-6 mb-5 mx-0">
                 <div class="costumes_card card border-dark text-center shadow-lg h-100" style="text-decoration: none;">
-                    <h3 class="card-header card-title py-4 m-0 bg-dark "
+                    <h3 class="card-header card-title py-4 m-0 bg-dark"
                         style="font-weight: bold;">{{ product.name }}</h3>
                     <div class="card-body">
                         <div id="carouselExampleIndicators-{{ product.pk }}" class="carousel carousel-dark slide">
@@ -18,13 +47,13 @@
                                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                                         <img src="{{ image.image.url }}" class="d-block w-100 h-100 rounded"
                                              style="height: 650px; background-color: rgba(0, 0, 0, 0.5)"
-                                             alt="Костюмы-Картинка">
+                                             alt="Товар-Картинка">
                                     </div>
                                 {% endfor %}
                             </div>
                             <button class="carousel-control-prev" type="button"
                                     data-bs-target="#carouselExampleIndicators-{{ product.pk }}" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" ariahidden="true"></span>
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
                             <button class="carousel-control-next" type="button"
@@ -42,7 +71,7 @@
             <div class="col-lg-6 mb-5 mx-0">
                 <div class="costumes_card card border-dark text-center shadow-lg h-100" style="text-decoration: none;">
 
-                    <div class="shadow-lg rounded bg-dark px-4 pb-3 " style="padding-top: 20px;">
+                    <div class="shadow-lg rounded bg-dark px-4 pb-3" style="padding-top: 20px;">
                         <p class="card-text text-start" style="font-size: 24px;">
                             <u><span style="font-size: 26px; color: aliceblue;">Описание:</span></u>
                             {{ product.description }}
@@ -56,7 +85,7 @@
                         </p>
                     </div>
 
-                    <div class="shadow-lg rounded bg-dark py-3 px-4 " style="padding-top: 15px;">
+                    <div class="shadow-lg rounded bg-dark py-3 px-4" style="padding-top: 15px;">
                         <p class="card-text text-start" style="font-size: 24px;">
                             <u><span style="font-size: 26px; color: aliceblue;">Размеры:</span></u>
                             {% for size in product.sizes.all %}
@@ -65,33 +94,6 @@
                             {% endfor %}
                         </p>
                     </div>
-
-                    {% if request.user.is_authenticated %}
-                        <div class="shadow-lg rounded bg-dark py-3 px-4 mt-3">
-                            <a href="{% url 'webapp:product_purchase' product.pk %}">
-                                <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Купить</button>
-                            </a>
-                        </div>
-                    {% else %}
-                        <div class="shadow-lg rounded bg-dark py-3 px-4 mt-3">
-                            <a href="{% url 'accounts:login' %}?next={{ request.path }}">
-                                <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Войти для покупки
-                                </button>
-                            </a>
-                        </div>
-                    {% endif %}
-
-
-                    {% if request.user.is_superuser %}
-                        <div class="shadow-lg rounded bg-dark py-3 px-4 mt-3">
-                            <a href="{% url "webapp:update_product" product.pk %}">
-                                <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Изменить</button>
-                            </a>
-                            <a href="{% url "webapp:delete_product" product.pk %}">
-                                <button type="button" class="btn btn-outline-light w-75 btn-lg my-2">Удалить</button>
-                            </a>
-                        </div>
-                    {% endif %}
                 </div>
             </div>
         </div>

@@ -14,6 +14,22 @@ body {
     padding: 0 0 0 0;
 }
 
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.purchase-option {
+    color: #212529;
+    background-color: rgba(200, 255, 0, 0.7);
+    border: 2px solid honeydew;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+    transition: background-color 2s;
+}
+
+.purchase-option:hover {
+    background-color: yellowgreen;
+}
+
 .costumes_card {
     color: white;
     background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью 50% */
@@ -183,4 +199,26 @@ body {
 .form-error {
     color: red;
     font-size: 18px;
+}
+
+.purchase_options {
+    display: flex;
+    justify-content: center;
+}
+
+.purchase-option {
+    width: 550px;
+    height: 400px;
+    padding: 30px;
+    margin: 15px; /* Устанавливаем отступ между карточками в 15px */
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.5s, background-color 0.5s;
+    text-align: center;
+    font-size: 32px; /* Устанавливаем размер текста в 32px */
+}
+
+.purchase-option:hover {
+    transform: scale(1.2);
+    background-color: #f0f0f0;
 }

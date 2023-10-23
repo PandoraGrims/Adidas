@@ -79,10 +79,7 @@ class Purchase(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Товар")
     size = models.ForeignKey(Size, on_delete=models.CASCADE, verbose_name="Размер")
     phone_number = models.CharField(max_length=200, verbose_name="Номер телефона")
-    delivery_address = models.TextField(verbose_name="Адрес доставки")
-    payment_method = models.CharField(max_length=200, verbose_name="Способ оплаты")
-    is_paid = models.BooleanField(default=False, verbose_name="Оплачено")
-    is_delivered = models.BooleanField(default=False, verbose_name="Доставлено")
+    delivery_address = models.TextField(verbose_name="Адрес доставки", blank=True, null=True)
 
     def __str__(self):
         return f"Покупка #{self.id}"

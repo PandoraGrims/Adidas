@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+    {% include "partial/link_header_partial.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="product_name_purchase text-center mt-5 pb-3">
+        <h1>{{ product.name }}</h1>
+    </div>
+
+    <div class="purchase_options text-center mx-5">
+        <div class="row">
+            <div class="col-xxl-6">
+                <a class="purchase-option_a" href="{% url "webapp:purchase_no_delivery" product.pk %}"
+                   style="text-decoration: none">
+                    <div class="purchase-option card purchase-option_a" id="buy-without-delivery">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <h5 class="card-title" style="font-size: 60px;font-weight: bold">Купить без доставки</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xxl-6">
+                <a class="purchase-option_a" href="{% url "webapp:purchase_with_delivery" product.pk %}" style="text-decoration: none">
+                    <div class="purchase-option card purchase-option_a" id="buy-with-delivery">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <h5 class="card-title" style="font-size: 60px; font-weight: bold">Купить с доставкой</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="delivery-note">
+        <p>Стоимость доставки не включена в оплату за товар.</p>
+    </div>
+{% endblock %}
