@@ -80,6 +80,7 @@ class Purchase(models.Model):
     size = models.ForeignKey(Size, on_delete=models.CASCADE, verbose_name="Размер")
     phone_number = models.CharField(max_length=200, verbose_name="Номер телефона")
     delivery_address = models.TextField(verbose_name="Адрес доставки", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
 
     def __str__(self):
         return f"Покупка #{self.id}"

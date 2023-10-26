@@ -308,3 +308,7 @@ class PurchaseWithDeliveryView(View):
         else:
             print(form.errors)
         return render(request, self.template_name, {'product': product, 'form': form})
+
+
+class PanelAdminView(TemplateView):
+    template_name = 'panel.html'
