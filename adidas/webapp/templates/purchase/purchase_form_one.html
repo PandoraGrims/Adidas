@@ -15,15 +15,15 @@
                     <div class="card-body">
                         <form method="post" class="purchase-form">
                             {% csrf_token %}
-                            <label for="size">Размер:</label>
-                            <select name="size" id="size">
+                            <label for="size" style="font-size: 30px">Размер:</label>
+                            <select name="size" id="size" style="font-size: 25px; padding-right: 20px; margin-right: 20px">
                                 {% for size in product.sizes.all %}
                                     <option value="{{ size.pk }}">{{ size }}</option>
                                 {% endfor %}
                             </select>
-                            <label for="phone">Контактный номер:</label>
-                            <input type="text" name="phone_number" id="phone">
-                            <button type="submit" class="btn btn-primary mt-3">Оформить заказ</button>
+                            <label for="phone" style="font-size: 30px">Контактный номер:</label>
+                            <input type="text" name="phone_number" id="phone" style="font-size: 30px">
+                            <button type="submit" class="btn btn-success mb-3" style="font-size: 25px">Оформить заказ</button>
                         </form>
                     </div>
                 </div>

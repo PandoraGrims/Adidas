@@ -23,16 +23,6 @@
         </a>
     </div>
 
-    {#    <div style="border-bottom: 18px solid aliceblue">#}
-    {#    </div>#}
-    {#    <div style="border-bottom: 20px solid #000505">#}
-    {#    </div>#}
-    {#    <div style="border-bottom: 18px solid aliceblue">#}
-    {#    </div>#}
-    {#    <div style="border-bottom: 20px solid #000505">#}
-    {#    </div>#}
-    {#    <div style="border-bottom: 18px solid aliceblue">#}
-    {#    </div>#}
     <div class="py-2 mx-5 px-3">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
@@ -43,16 +33,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        {% if request.user.is_superuser %}
-                            <div class="panel_admin text-end pe-2">
-                                <a href="{% url 'webapp:add_product' %}">
-                                    <button type="button" class="btn btn-warning" style="font-size: 30px">Добавить
-                                        продукт
-                                    </button>
-                                </a>
-                            </div>
-                        {% endif %}
-
                         {% block link %}
                         {% endblock %}
 
@@ -67,6 +47,13 @@
                                 <a class="nav-link ps-4" style="color: whitesmoke; font-size: 28px;"
                                    href="{% url "accounts:profile" request.user.pk %}">{{ request.user.username }}</a>
                             </li>
+                            {% if request.user.is_superuser %}
+                                <div class="panel_admin text-end pe-2">
+                                    <a href="{% url 'webapp:panel_admin_view' %}" style="text-decoration: none">
+                                        <i class="bi bi-wrench-adjustable-circle ps-2" style="font-size: 30px; color: darkorange"></i>
+                                    </a>
+                                </div>
+                            {% endif %}
                         {% else %}
                             <li class="nav-item nav-link text-decoration-underline">
                                 <a class="nav-link" style="color: whitesmoke; font-size: 28px;"
