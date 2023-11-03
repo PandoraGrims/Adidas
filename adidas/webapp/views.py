@@ -16,8 +16,8 @@ from django.contrib.auth import authenticate, login
 
 
 class PaginatedListView(ListView):
-    items_per_page = 12  # Количество элементов на странице
-    page_url_param = 'page'  # Параметр в URL для страницы
+    items_per_page = 12
+    page_url_param = 'page'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
