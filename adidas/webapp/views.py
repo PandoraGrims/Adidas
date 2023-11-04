@@ -312,3 +312,12 @@ class PurchaseWithDeliveryView(View):
 
 class PanelAdminView(TemplateView):
     template_name = 'panel.html'
+
+
+class OrderListView(TemplateView):
+    template_name = 'order_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['purchases'] = Purchase.objects.all()
+        return context

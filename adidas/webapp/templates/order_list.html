@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h1>Список заказов</h1>
+        <div class="row">
+            {% for purchase in purchases %}
+                <div class="col-xxl-3 mb-4">
+                    <div class="card order_card_false h-100">
+                        <div class="card-body m-0">
+                            <h5 class="card-title">Заказ № {{ purchase.id }}</h5>
+                            <p class="card-text">Покупатель: {{ purchase.user }}</p>
+                            <p class="card-text">Товар: {{ purchase.product }}</p>
+                            <p class="card-text">Размер: {{ purchase.size }}</p>
+                            <p class="card-text">Номер телефона: {{ purchase.phone_number }}</p>
+                            <p class="card-text">Адрес доставки: {{ purchase.delivery_address }}</p>
+                            <p class="card-text">Дата заказа: {{ purchase.created_at }}</p>
+                            <div class="card-footer p-0 m-0 text-center" style="background-color: #212529">
+                                {% if purchase.paid %}
+                                    <span style="color: greenyellow; font-size: 30px;">Оплачено</span>
+                                {% else %}
+                                    <span style="color: red; font-size: 30px;">Не оплачено</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
+{% endblock %}
