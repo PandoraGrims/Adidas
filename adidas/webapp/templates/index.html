@@ -6,8 +6,14 @@
 {% endblock %}
 
 {% block content %}
-    {% include "partial/carusel_base_index.html" %}
-
+    {#    {% include "partial/carusel_base_index.html" %}#}
+{#    <div class="header_text_logo">#}
+{#        <a class="navbar-brand" href="{% url "webapp:index" %}">#}
+{#            <img src="{% static "img/3gir.png" %}" alt="Image 0" style="width: 170px; height: 150px;">#}
+{#            <img src="{% static "img/oie_dUbJgtgudxui.png" %}" alt="Image 1" style="width: 250px; height: 150px;">#}
+{#            <img src="{% static "img/oie_qCYr28VnFFy7.png" %}" alt="Image 2" style="width: 550px; height: 150px;">#}
+{#        </a>#}
+{#    </div>#}
 
 
     <div class="container_partial_product_list">
@@ -15,8 +21,8 @@
     </div>>
 
 
-        <div class="line_bord mb-4" style="border-bottom: 2px solid aliceblue;">
-        </div>
+    <div class="line_bord mb-4" style="border-bottom: 2px solid aliceblue;">
+    </div>
 
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}

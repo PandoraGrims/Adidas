@@ -1,34 +1,94 @@
-<li class="nav-item text-center me-3 ms-5" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
-    <a class="nav-link" href="{% url "webapp:index" %}"
-       style="text-align:center; color: whitesmoke; font-size: 26px;">Главная</a>
+{% load static %}
+<div class="d-flex px-3">
+    <div class="header_text_logo">
+        <a class="navbar-brand" href="{% url "webapp:index" %}">
+            <img src="{% static "img/3gir.png" %}" alt="Image 0" style="width: 170px; height: 150px;">
+            <img src="{% static "img/oie_dUbJgtgudxui.png" %}" alt="Image 1" style="width: 250px; height: 150px;">
+            <img src="{% static "img/oie_qCYr28VnFFy7.png" %}" alt="Image 2" style="width: 550px; height: 150px;">
+        </a>
+    </div>
+    <div>
+        <div >
+            <ul class="block_item_and_link">
+                <li class="nav-item nav_item_header text-center">
+                    <a class="nav-link nav_link_header" href="{% url "webapp:index" %}">Главная</a>
+                </li>
 
-</li>
-<li class="nav-item dropdown text-center mx-3 d-flex align-center"
-    style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
-    <a class="nav-link active " style="font-size: 26px" href="{% url "webapp:category_list" %}" role="button">Категории</a>
-    <a class="nav-link bi-arrow-right-circle-fill active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-       style="font-size: 26px; display: flex; align-items: center;">
-    </a>
-    <ul class="dropdown-menu" style="margin-right: 2px; font-size: 22px">
-        <li><a class="dropdown-item" href="{% url "webapp:costumes_list" %}">Костюмы</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:hoodies_list" %}">Толстовки</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:trousers_list" %}">Брюки</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:jackets_list" %}">Куртки</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:vests_list" %}">Жилетки</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:t-shirts_list" %}">Футболки</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:shoes_list" %}">Обувь</a></li>
-        <li><a class="dropdown-item" href="{% url "webapp:caps_and_hats_list" %}">Кепки & Шапки</a></li>
-    </ul>
-</li>
-<li class="nav-item text-center mx-3" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
-    <a class="nav-link" href="{% url "webapp:shipping_payment" %}"
-       style="text-align:center; color: whitesmoke; font-size: 26px;">Доставка и оплата</a>
-</li>
-<li class="nav-item text-center mx-3" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
-    <a class="nav-link" href="{% url "webapp:exchange_return" %}"
-       style="text-align:center; color: whitesmoke; font-size: 26px;">Обмен и возврат</a>
-</li>
-<li class="nav-item text-center mx-3" style="border-bottom: 2px solid aliceblue; border-radius: 10px; height: 60px">
-    <a class="nav-link" href="{% url "webapp:about_us" %}"
-       style="text-align:center; color: whitesmoke; font-size: 26px;">О нас</a>
-</li>
+
+                <li  class="nav-item nav_item_header_category dropdown me-1">
+                    <a class="nav-link nav_link_header" href="{% url "webapp:category_list" %}"
+                       role="button">Категории</a>
+
+                    <a class="nav-link nav_link_header_arrow bi-arrow-right-circle-fill" href="#" role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false"
+                       style="font-size: 24px; color: #212529;">
+                    </a>
+
+                    <ul class="dropdown-menu" style="margin-right: 2px; font-size: 22px">
+                        <li><a class="dropdown-item" href="{% url "webapp:costumes_list" %}">Костюмы</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:hoodies_list" %}">Толстовки</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:trousers_list" %}">Брюки</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:jackets_list" %}">Куртки</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:vests_list" %}">Жилетки</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:t-shirts_list" %}">Футболки</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:shoes_list" %}">Обувь</a></li>
+                        <li><a class="dropdown-item" href="{% url "webapp:caps_and_hats_list" %}">Кепки & Шапки</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item nav_item_header text-center">
+                    <a class="nav-link nav_link_header" href="{% url "webapp:shipping_payment" %}">Доставка и оплата</a>
+                </li>
+
+                <li class="nav-item nav_item_header text-center">
+                    <a class="nav-link nav_link_header" href="{% url "webapp:exchange_return" %}">Обмен и возврат</a>
+                </li>
+
+                <li class="nav-item nav_item_header text-center">
+                    <a class="nav-link nav_link_header" href="{% url "webapp:about_us" %}">О нас</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <form>
+                <form method="get" action="#">
+                    <label>
+                        <input class="form-input" type="text" name="q" placeholder="Поиск...Поиск...Поиск...">
+                    </label>
+                    <button class="btn-form-search" type="submit">Искать</button>
+                </form>
+                <div class="nav-block-reg">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item nav_item_form_reg">
+                            <a class="nav-link form-container_nav_link"
+                               href="{% url "accounts:logout" %}">Выход</a>
+                        </li>
+                        <li class="nav-item nav_item_form_reg">
+                            <a class="nav-link form-container_nav_link"
+                               href="{% url "accounts:profile" request.user.pk %}">{{ request.user.username }}</a>
+                        </li>
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'webapp:panel_admin_view' %}" style="text-decoration: none">
+                                <i class="bi bi-wrench-adjustable-circle"
+                                   style="font-size: 22px; color: darkorange"></i>
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        <li class="nav-item nav_item_form_reg">
+                            <a class="nav-link" style="color: #212529; font-size: 22px;"
+                               href="{% url "accounts:register" %}?next={{ request.path }}">Регистрация</a>
+                        </li>
+                        <li class="nav-item nav_item_form_reg">
+                            <a class="nav-link ps-4" style="color: #212529; font-size: 22px;"
+                               href="{% url "accounts:login" %}?next={{ request.path }}">Вход</a>
+                        </li>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

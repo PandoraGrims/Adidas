@@ -15,64 +15,33 @@
 <body>
 <header>
 
-    <div class="header_text_logo text-center pt-3">
-        <a class="navbar-brand" href="{% url "webapp:index" %}">
-            <img src="{% static "img/3gir.png" %}" alt="Image 0" style="width: 170px; height: 150px;">
-            <img src="{% static "img/oie_dUbJgtgudxui.png" %}" alt="Image 1" style="width: 250px; height: 150px;">
-            <img src="{% static "img/oie_qCYr28VnFFy7.png" %}" alt="Image 2" style="width: 550px; height: 150px;">
-        </a>
-    </div>
 
-    <div class="py-2 mx-5 px-3">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarTogglerDemo03"
-                        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        {% block link %}
-                        {% endblock %}
-
-                    </ul>
-                    <form class="d-flex">
-                        {% if request.user.is_authenticated %}
-                            <li class="nav-item nav-link">
-                                <a class="nav-link" style="color: whitesmoke; font-size: 28px;"
-                                   href="{% url "accounts:logout" %}">Выход</a>
-                            </li>
-                            <li class="nav-item nav-link text-decoration-underline">
-                                <a class="nav-link ps-4" style="color: whitesmoke; font-size: 28px;"
-                                   href="{% url "accounts:profile" request.user.pk %}">{{ request.user.username }}</a>
-                            </li>
-                            {% if request.user.is_superuser %}
-                                <div class="panel_admin text-end pe-2">
-                                    <a href="{% url 'webapp:panel_admin_view' %}" style="text-decoration: none">
-                                        <i class="bi bi-wrench-adjustable-circle ps-2" style="font-size: 30px; color: darkorange"></i>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        {% else %}
-                            <li class="nav-item nav-link text-decoration-underline">
-                                <a class="nav-link" style="color: whitesmoke; font-size: 28px;"
-                                   href="{% url "accounts:register" %}?next={{ request.path }}">Регистрация</a>
-                            </li>
-                            <li class="nav-item nav-link text-decoration-underline">
-                                <a class="nav-link ps-4" style="color: whitesmoke; font-size: 28px;"
-                                   href="{% url "accounts:login" %}?next={{ request.path }}">Вход</a>
-                            </li>
-                        {% endif %}
-                    </form>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo03"
+                    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% block link %}
+                    {% endblock %}
+                </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
 </header>
 
 <div class="container_block_content p-0 m-0">
-
+    {#    <div class="header_text_logo text-center pt-3">#}
+    {#        <a class="navbar-brand" href="{% url "webapp:index" %}">#}
+    {#            <img src="{% static "img/3gir.png" %}" alt="Image 0" style="width: 170px; height: 150px;">#}
+    {#            <img src="{% static "img/oie_dUbJgtgudxui.png" %}" alt="Image 1" style="width: 250px; height: 150px;">#}
+    {#            <img src="{% static "img/oie_qCYr28VnFFy7.png" %}" alt="Image 2" style="width: 550px; height: 150px;">#}
+    {#        </a>#}
+    {#    </div>#}
     {% block content %}
 
     {% endblock %}

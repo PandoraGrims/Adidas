@@ -16,11 +16,15 @@
                             <p class="card-text">Адрес доставки: {{ purchase.delivery_address }}</p>
                             <p class="card-text">Дата заказа: {{ purchase.created_at }}</p>
                             <div class="card-footer p-0 m-0 text-center" style="background-color: #212529">
-                                {% if purchase.paid %}
-                                    <span style="color: greenyellow; font-size: 30px;">Оплачено</span>
+                                {% if purchase.is_paid %}
+                                    <p class="text-success">ОПЛАЧЕНО</p>
                                 {% else %}
-                                    <span style="color: red; font-size: 30px;">Не оплачено</span>
+                                    <p class="text-danger">НЕ ОПЛАЧЕНО</p>
                                 {% endif %}
+                                <form method="post" action="{% url 'webapp:update_purchase' purchase.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Изменить статус оплаты</button>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -81,6 +81,7 @@ class Purchase(models.Model):
     phone_number = models.CharField(max_length=200, verbose_name="Номер телефона")
     delivery_address = models.TextField(verbose_name="Адрес доставки", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    is_paid = models.BooleanField(default=False, verbose_name="Оплачен")
 
     def __str__(self):
         return f"Покупка #{self.id}"

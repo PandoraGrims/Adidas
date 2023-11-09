@@ -48,4 +48,4 @@ class PurchaseForm(forms.ModelForm):
 
     class Meta:
         model = Purchase
-        fields = ['size', 'phone_number', 'delivery_address']
+        fields = ['size', 'phone_number', 'delivery_address', 'is_paid']

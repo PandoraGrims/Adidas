@@ -223,25 +223,6 @@ class PurchaseView(TemplateView):
         return context
 
 
-# class ProductPurchaseView(CreateView):
-#     model = Purchase
-#     form_class = PurchaseForm
-#     template_name = 'purchase/purchase_form_one.html'
-#     success_url = reverse_lazy('webapp:purchase_success')
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         product = get_object_or_404(Product, pk=self.kwargs['product_id'])
-#         context['product'] = product
-#         context['sizes'] = product.sizes.all()
-#         return context
-#
-#     def form_valid(self, form):
-#         product = get_object_or_404(Product, pk=self.kwargs['product_id'])
-#         form.instance.user = self.request.user
-#         form.instance.product = product
-#         return super().form_valid(form)
-
 class PurchaseSuccessView(TemplateView):
     template_name = 'purchase/purchase_success.html'
 
@@ -321,3 +302,27 @@ class OrderListView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['purchases'] = Purchase.objects.all()
         return context
+
+
+class UpdatePurchaseStatusView(View):
+    def post(self, request, purchase_id):
+        purchase = Purchase.objects.get(id=purchase_id)
+        purchase.is_paid = not purchase.is_paid  # Инвертируем значение
+        purchase.save()
+        return redirect(reverse_lazy('webapp:order_list'))
+
+
+def search_products(request):
+    query = request.GET.get('q')  # Получите поисковой запрос из параметров GET
+
+    if query:
+        products = Product.objects.filter(name__icontains=query)  # Фильтруйте продукты по совпадению названия
+    else:
+        products = Product.objects.all()  # Если запрос пустой, отобразите все продукты
+
+    context = {
+        'products': products,
+        'query': query,  # Передайте поисковой запрос в шаблон
+    }
+
+    return render(request, 'your_template.html', context)
